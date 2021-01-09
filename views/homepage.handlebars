@@ -1,0 +1,65 @@
+{{>header}}
+<link rel="stylesheet" href="/css/styles.css">
+<div id="headerTag2">
+  <h4>KidTastic</h4>
+</div>
+
+
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+  </div>
+</div>
+
+{{#unless isChild}}
+<h3>Create a profile for your child(ren):</h3>
+
+<form class="form new-project-form">
+  <h2>Child can fill this form out individually or with a parent/guardian:</h2>
+  <label for="kidName">name:</label>
+
+  <input class="form-input" type="text" id="kidName" name="project-name" />
+
+  <div class="form-group">
+    <label for="kidBirth">birthday: </label>
+    <input class="form-input" type="date" id="kidBirth" name="project-funding" />
+  </div>
+  <div class="form-group">
+    <label for="userId">username: </label>
+    <textarea class="form-input" id="kidUsername" name="project-desc"></textarea>
+  </div>
+  <label for="password-login">password:</label>
+  <input class="form-input" type="password" id="password-login" />
+  <div class="form-group">
+    <button type="submit">Add Child</button>
+
+  </div>
+</form>
+{{/unless}}
+
+<script src="./js/profile.js"></script>
+
+
+<iframe src="https://giphy.com/embed/wVRM3ItKfEsmc" width="480" height="278" frameBorder="0" class="giphy-embed"
+  allowFullScreen></iframe>
+<p><a href="https://giphy.com/gifs/otp-sword-art-online-i-love-her-wVRM3ItKfEsmc">via GIPHY</a></p>
+<a href="/">click here to go back to the main page</a>
+<!-- Loop over each object in the projects array -->
+{{#each children as |Child| }}
+
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <div id="homepage">
+      <h2>
+        <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+        {{!-- {{{get_emoji}}} --}}
+        <br href="/Child/{{Child.id}}">{{Child.name}}</br></br>{{Child.birthDate}}</br>{{Child.userId}}</a>
+      </h2>
+    </div>
+  </div>
+  <div class="col-md-7">
+
+  </div>
+</div>
+{{/each}}
+{{>footer}}
